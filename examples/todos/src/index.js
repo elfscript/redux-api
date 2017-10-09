@@ -49,7 +49,7 @@ function printObj(o){
 	console.log(printObj2str(o) );
 }
 
-console.log(todoAppReducers);
+console.log("todoAppReducers");
 printObj(todoAppReducers);
 
 
