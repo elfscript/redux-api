@@ -19,11 +19,15 @@ import adapterFetch from "redux-api/lib/adapters/fetch";
 import App from './components/App'
 //import reducer from './reducers'
 
-import todoAppReducer from './reducers';
+import todoAppReducers from './reducers';
 
-console.log(typeof todoAppReducer);
-console.dir(todoAppReducer);
+console.log(typeof todoAppReducers);
+console.dir(todoAppReducers);
 
+//x={...todoAppReducers};
+function myspread(o1,o2){
+	return Object.assign({}, o1 , o2);
+}
 
 // Initialize react-api
 reduxApi.use("fetch", adapterFetch(fetch));
@@ -45,44 +49,50 @@ function printObj(o){
 	console.log(printObj2str(o) );
 }
 
-printObj(todoAppReducer);
+console.log(todoAppReducers);
+printObj(todoAppReducers);
 
 
 // Prepare store
-const reducer = combineReducers({...reduxApi.reducers, ...todoAppReducer});
+const reducer = combineReducers(myspread(reduxApi.reducers, todoAppReducers));
 const finalCreateStore = applyMiddleware(thunk)(createStore);
 const initialState = window.$REDUX_STATE;
 const store = initialState ? finalCreateStore(reducer, initialState) : finalCreateStore(reducer);
 delete window.$REDUX_STATE;
 
 //===
-for(var i=0; i< reduxApi.reducers.length; i++){
+/* reduxApi.reducers is not an array, it is an object
+ * for(var i=0; i< reduxApi.reducers.length; i++){
+	console.log(i);
 	printObj(reduxApi.reducers[i]);
 
-}
+}*/
+
+console.log("reduxApi.reducers");
+printObj(reduxApi.reducers);
+
+console.log("the combined reducer");
+//reducer is not an object? it is a function
+//printObj(reducer);
+console.log(reducer.toString());
+
 
 //====
-render(
+/*render(
 	<Provider store={store}>
 		<App />
 	</Provider>,
 	document.getElementById('root')
 )
+*/
 
 
 
-
-	/*var y={k1:"v1", k2:"v2"};
-printObj(x);
-printObj(reduxApi.reducers);
-printObj(y);
-
-var str1=printObj2str(x);
+var y={k1:"v1", k2:"v2"};
 var str2=printObj2str(reduxApi.reducers);
 var str3=printObj2str(y);
 
 render (	<div>
-	{str1},
 	I am a pig.
 	{str2}, 
 	{str3}
@@ -90,5 +100,5 @@ render (	<div>
 	document.getElementById('root')
 )
 
-*/
+
 
