@@ -31,7 +31,11 @@ function myspread(o1,o2){
 
 // Initialize react-api
 reduxApi.use("fetch", adapterFetch(fetch));
-
+/*reduxApi.use("responseHandler", 
+	(err, data)=> { 
+		if (err.message === 'Not allowed') { throw new NotAllowedError(); } 
+		else { return data; } 
+	});*/
 //===================
 function printObj2str(o) {
 	if(!o) return "null object?";
@@ -78,16 +82,16 @@ console.log(reducer.toString());
 
 
 //====
-/*render(
+render(
 	<Provider store={store}>
 		<App />
 	</Provider>,
 	document.getElementById('root')
 )
-*/
 
 
 
+/*
 var y={k1:"v1", k2:"v2"};
 var str2=printObj2str(reduxApi.reducers);
 var str3=printObj2str(y);
@@ -99,6 +103,6 @@ render (	<div>
 </div>,
 	document.getElementById('root')
 )
-
+*/
 
 
