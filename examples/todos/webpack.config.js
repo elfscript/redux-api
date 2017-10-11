@@ -7,10 +7,13 @@ var plugins = [
 	new webpack.DefinePlugin({
 		"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
 	}),
-	new webpack.optimize.OccurenceOrderPlugin(),
-	"transform-es2015-destructuring", 
-	"transform-object-rest-spread"
+	new webpack.optimize.OccurenceOrderPlugin()
 ];
+
+//	"babel-plugin-transform-es2015-destructuring", 
+//	"babel-plugin-transform-es2015-parameters",
+//	"babel-plugin-transform-object-rest-spread"
+
 
 if (process.env.NODE_ENV === "production") {
 	plugins.push(
