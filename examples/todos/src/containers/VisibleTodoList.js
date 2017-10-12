@@ -29,3 +29,33 @@ const VisibleTodoList = connect(
 )(TodoList)
 
 export default VisibleTodoList
+
+//=== verbose form of mapStateToProps
+/*
+ const mapStateToProps = (state) => {
+   return {
+	       todos: getVisibleTodos(state.todos, state.visibilityFilter)
+	     }
+ }
+
+*/
+
+//=== verbose form of mapDispatchToProps
+	/* const mapDispatchToProps = (dispatch) => {
+	  return {
+		      onTodoClick: (id) => {
+			            dispatch(toggleTodo(id))
+			          }
+		    }
+}
+*/
+
+
+
+
+
+
+
+
+
+
