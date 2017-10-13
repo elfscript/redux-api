@@ -18,7 +18,7 @@ let AddTodo = ({ dispatch }) => {
 				console.log("onSubmit of AddTodo form");
 				console.log(JSON.stringify(data)); 
 				//dispatch rest.actions or not ??
-				dispatch(addTodo(data.msg));
+				//dispatch(addTodo(data.msg));
 				dispatch(rest.actions.addtodo({}, { body: JSON.stringify(data) } ) ); 
 				input.value = '';
 				}}>
