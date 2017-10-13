@@ -31,7 +31,7 @@ router.get('/todos', (req, res) => {
 
 	db.collection('todos')
 		.find(qryObj)
-		.sort({ title: 1 })
+		.sort({ id: -1 })
 		.toArray((err, docs) => {
 			if (err) {
 				console.log('error on /api/todos', err)
