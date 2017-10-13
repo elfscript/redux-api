@@ -23,7 +23,16 @@ export default reduxApi({
 			headers: {"Accept": "application/json", 
 				"Content-Type": "application/json" }
 		}
+	},
+	updatetodos: {
+		url: `${URL}/api/todos`,
+		options:{ 
+			method: 'POST',
+			headers: {"Accept": "application/json", 
+				"Content-Type": "application/json" }
+		}
 	}
+
 
 
 

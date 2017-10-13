@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
+import AddTodo from '../containers/AddTodo';
+import UpdateDB from '../containers/UpdateDB';
 import VisibleTodoList from '../containers/VisibleTodoList'
 import rest from "../actions/rest"
 
@@ -35,7 +36,7 @@ class App extends React.Component {
 		return this.props.isReady
 			?  (
 				<div>
-					<AddTodo />
+					<span><AddTodo /><UpdateDB /></span>
 					<VisibleTodoList />
 					<Footer />
 				</div>
