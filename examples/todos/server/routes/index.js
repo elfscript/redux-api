@@ -60,7 +60,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post('/addtodo/', (req, res) => {
-	console.log("post req got");
+	console.log("addtodo post req got");
 	const newNoteData = req.body;
 	console.log("newNoteData: ");
 	if(newNoteData) console.log(JSON.stringify(newNoteData));
@@ -99,6 +99,37 @@ router.post('/addtodo/', (req, res) => {
 		});
 });
 
+//===
+router.post('/todos/', (req, res) => {
+	console.log("updatetodos, post req got, todos: ");
+	const todos = req.body.todos; //assume req.body={ todos: [doc1, doc2, doc3, ...] } --> [doc1, doc2, ...]
+	if(todos) console.log(JSON.stringify(todos));
+	else console.log("empty body???");
+
+	//	db.collection('todos').updateOne({"completed": {$ne: item.completed}}, 
+
+	var bulktodos = todos.map(function (item, index, array) {
+
+		return { "updateOne" : 
+			{ "filter" : { "id": {$eq: item.id} ,"completed" : {$ne:item.completed } }, 
+				"update" : { 
+					$set : { "completed" : item.completed } ,
+					$currentDate: { lastModified: true }
+				}
+			}
+		} 
+
+	});
+	console.log("bulktodos==> " + JSON.stringify(bulktodos));
+
+	try { db.collection('todos').bulkWrite( bulktodos ); } 
+	catch (e) { console.log("error occurred in router.post('/todos'): " + e); }
+
+
+});
+
+
+//===
 router.put('/update/', (req, res) => {
 	const updatedNoteData = req.body;
 
