@@ -152,10 +152,13 @@ router.put('/update/', (req, res) => {
 		})
 });
 
-router.delete('/delete/', (req, res) => {
-	const deletedNoteDataId = req.body.id;
+router.delete('/delete/:id', (req, res) => {
+	const id_todel = parseInt(req.params.id);
+	console.log(typeof(id_todel));
+	console.log("id_todel=" + id_todel);
+
 	db.collection('todos')
-		.remove({ id: deletedNoteDataId }, (err, result) => {
+		.remove({ id: id_todel }, (err, result) => {
 			if (err) {
 				console.log('error ', err);
 			} else {

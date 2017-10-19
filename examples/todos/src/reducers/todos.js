@@ -15,6 +15,7 @@ const todos = (state = [], action) => {
 				}
 			]
 		case rest.events.todos.actionSuccess:
+			//get todos list
 			console.log("todos reducer catch rest.events.todos");
 			//console.log("action.data:" + JSON.stringify(action.data));
 			//why action.data is empty ?
@@ -24,6 +25,10 @@ const todos = (state = [], action) => {
 			return [
 				...state, ...action.data.data
 			]
+		case rest.events.delete_item.actionSuccess:
+			console.log("delete_item succeeded " + JSON.stringify(action.data));
+			//return  state.filter(function(item) { return item.id !== action.data.id });
+			return state;
 
 		case 'ADD_TODO':
 			/*return [

@@ -35,7 +35,7 @@ export default reduxApi({
 	}
 	,
 	delete_item : {
-		url: `${URL}/api/delete/:id`,
+		url: `${URL}/api/delete_item/:id`,
 		options:{ 
 			method: 'DELETE',
 			headers: {"Accept": "application/json", 
@@ -43,7 +43,7 @@ export default reduxApi({
 		}
 	},
 	update_item : {
-		url: `${URL}/api/update`,
+		url: `${URL}/api/update_item`,
 		options:{ 
 			method: 'PUT',
 			headers: {"Accept": "application/json", 
