@@ -1,0 +1,5 @@
+- connect()(//Component) --> dispatch would be passed as props
+
+- connect(mapStateToProps)(//Component) --> dispatch would be passed as props
+
+- connect(mapStateToProps,mapDispatchToProps)(//Component) --> dispatch would not be:q

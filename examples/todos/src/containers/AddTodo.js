@@ -14,7 +14,7 @@ let AddTodo = ({ dispatch }) => {
 				if (!input.value.trim()) {
 					return
 				}
-				var data={title: "Hello", msg: input.value};
+				var data={title: "Hello", text: input.value, completed:false};
 				console.log("onSubmit of AddTodo form");
 				console.log(JSON.stringify(data)); 
 				//dispatch rest.actions or not ??
@@ -22,14 +22,13 @@ let AddTodo = ({ dispatch }) => {
 				dispatch(rest.actions.addtodo({}, { body: JSON.stringify(data) } ) ); 
 				input.value = '';
 				}}>
-				<input ref={node => {
-					input = node
-				}} />
-			<button type="submit">
-				Add Todo
-			</button>
-		</form>
-	</div>
+
+				<input ref={node => { input = node } } />
+				<button type="submit">
+					Add Todo
+				</button>
+			</form>
+		</div>
 	)
 }
 AddTodo = connect()(AddTodo)

@@ -9,15 +9,15 @@ import {connect} from 'react-redux'
 //edmenu --> EdMenu
 const EdMenu = ({menuId, onEdit, onDelete}) => (
 	<menu type="context" id={menuId}>
-		<menuitem label="edit" onclick={onEdit}></menuitem>
-		<menuitem label="delete" onclick={onDelete}></menuitem>
+		<menuitem label="edit" onClick={onEdit}></menuitem>
+		<menuitem label="delete" onClick={onDelete}></menuitem>
 	</menu>
 )
 
 EdMenu.propTypes = {
 	menuId: PropTypes.string.isRequired,
-	onEdit: PropTypes.func.isRequired,
-	onDelete: PropTypes.func.isRequired,
+	onEdit: PropTypes.func,
+	onDelete: PropTypes.func,
 }
 
 //=============

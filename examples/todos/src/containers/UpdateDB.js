@@ -32,7 +32,7 @@ let updateDB = (props) => {
 updateDB.propTypes = {
 	todos: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.number.isRequired,
-		completed: PropTypes.bool.isRequired,
+		completed: PropTypes.bool,
 		text: PropTypes.string.isRequired
 	}).isRequired).isRequired,
 }

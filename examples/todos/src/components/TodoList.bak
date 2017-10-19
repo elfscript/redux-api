@@ -1,0 +1,48 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import Todo from './Todo'
+import EdContextMenu from './EdContextMenu'
+
+//props={dispatch, todos, ....}
+const TodoList = ({ todos, onTodoClick }) => {
+	return (
+		<ul>
+			{
+				//var contextId="todo_context"+todo.id; not allow statements here
+				todos.map(todo => {
+					let  contextId="todo_context"+todo.id; 
+					return 	(	
+						<div key={"tododiv"+ todo.id}>
+							<EdContextMenu 
+								key={"menu" + todo.id}
+								menuId={contextId}
+								itemId={todo.id}
+								text={todo.text}
+							/>
+							<Todo
+								key={"todo" + todo.id}
+								id={todo.id}
+								contextId={contextId}
+								completed={todo.completed}
+								text={todo.text}
+								onClick={() => onTodoClick(todo.id)}
+							/>
+						</div>
+					);
+
+				})
+			}
+		</ul>
+	)
+}
+
+TodoList.propTypes = {
+	todos: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		completed: PropTypes.bool.isRequired,
+		text: PropTypes.string.isRequired
+	}).isRequired).isRequired,
+	onTodoClick: PropTypes.func.isRequired
+}
+
+export default TodoList
