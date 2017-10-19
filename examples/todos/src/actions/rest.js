@@ -24,6 +24,7 @@ export default reduxApi({
 				"Content-Type": "application/json" }
 		}
 	},
+	//update the whole tododb.todos collection with the current state
 	updatetodos: {
 		url: `${URL}/api/todos`,
 		options:{ 
@@ -32,6 +33,23 @@ export default reduxApi({
 				"Content-Type": "application/json" }
 		}
 	}
+	,
+	delete_item : {
+		url: `${URL}/api/delete/:id`,
+		options:{ 
+			method: 'DELETE',
+			headers: {"Accept": "application/json", 
+				"Content-Type": "application/json" }
+		}
+	},
+	update_item : {
+		url: `${URL}/api/update`,
+		options:{ 
+			method: 'PUT',
+			headers: {"Accept": "application/json", 
+				"Content-Type": "application/json" }
+		}
+	},
 
 
 
