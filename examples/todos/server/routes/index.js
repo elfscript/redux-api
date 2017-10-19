@@ -162,7 +162,7 @@ router.delete('/delete_item/:id', (req, res) => {
 			if (err) {
 				console.log('error ', err);
 			} else {
-				res.json(result);
+				res.json({id: id_todel, data:result});
 			}
 		});
 });
