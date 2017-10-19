@@ -27,8 +27,9 @@ const todos = (state = [], action) => {
 			]
 		case rest.events.delete_item.actionSuccess:
 			console.log("delete_item succeeded " + JSON.stringify(action.data));
-			//return  state.filter(function(item) { return item.id !== action.data.id });
-			return state;
+			console.log("typeof action.id = " + typeof(action.data.id));
+			return  state.filter(function(item) { return item.id !== action.data.id });
+			//return state;
 
 		case 'ADD_TODO':
 			/*return [
