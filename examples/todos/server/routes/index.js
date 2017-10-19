@@ -130,7 +130,7 @@ router.post('/todos/', (req, res) => {
 
 
 //===
-router.put('/update/', (req, res) => {
+router.put('/update_item/', (req, res) => {
 	const updatedNoteData = req.body;
 
 	// Update updatedNoteData to DB
@@ -152,7 +152,7 @@ router.put('/update/', (req, res) => {
 		})
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete_item/:id', (req, res) => {
 	const id_todel = parseInt(req.params.id);
 	console.log(typeof(id_todel));
 	console.log("id_todel=" + id_todel);
