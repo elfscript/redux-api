@@ -5,13 +5,13 @@ import rest from '../actions/rest';
 //const {actions} =rest;
 //
 let AddTodo = ({ dispatch }) => {
-	let input
+	let myinput
 
 	return ( 
 		<div>
 			<form onSubmit={e => {
 				e.preventDefault();
-				if (!input.value.trim()) {
+				if (!myinput.value.trim()) {
 					return
 				}
 				var data={title: "Hello", text: input.value, completed:false};
@@ -20,10 +20,10 @@ let AddTodo = ({ dispatch }) => {
 				//dispatch rest.actions or not ??
 				//dispatch(addTodo(data.msg));
 				dispatch(rest.actions.addtodo({}, { body: JSON.stringify(data) } ) ); 
-				input.value = '';
+				myinput.value = '';
 				}}>
 
-				<input ref={node => { input = node } } />
+				<input ref={node => { myinput = node } } />
 				<button type="submit">
 					Add Todo
 				</button>
