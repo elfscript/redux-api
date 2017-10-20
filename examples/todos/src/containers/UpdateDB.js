@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions';
 import rest from '../actions/rest';
 import PropTypes from 'prop-types';
-//const {actions} =rest;
-//
-//
 
 let updateDB = (props) => {
 	//let todos=this.props.todos;

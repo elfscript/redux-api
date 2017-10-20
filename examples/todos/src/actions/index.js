@@ -14,3 +14,10 @@ export const toggleTodo = (id) => ({
   type: 'TOGGLE_TODO',
   id
 })
+
+export const setInputText = (txt) => ({
+  type: 'SET_INPUT_TEXT',
+  text: txt
+})
+
+

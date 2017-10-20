@@ -29,6 +29,10 @@ function myspread(o1,o2){
 	return Object.assign({}, o1 , o2);
 }
 
+//{...o1, ...o2}
+//spread syntax
+
+
 // Initialize react-api
 reduxApi.use("fetch", adapterFetch(fetch));
 /*reduxApi.use("responseHandler", 

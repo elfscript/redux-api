@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions';
 import rest from '../actions/rest';
-import PropTypes from 'prop-types';
-
-let AddTodo = ({ dispatch, inputTxt }) => {
+//const {actions} =rest;
+//
+let AddTodo = ({ dispatch }) => {
 	let myinput
 
 	return ( 
@@ -23,7 +23,7 @@ let AddTodo = ({ dispatch, inputTxt }) => {
 				myinput.value = '';
 				}}>
 
-				<input ref={node => { myinput = node } } value={inputTxt}/>
+				<input ref={node => { myinput = node } } />
 				<button type="submit">
 					Add Todo
 				</button>
@@ -31,16 +31,6 @@ let AddTodo = ({ dispatch, inputTxt }) => {
 		</div>
 	)
 }
-AddTodo.propTypes = {
-	inputTxt:PropTypes.string,
-}
-
-//=======================
-const mapStateToProps = (state) => ({
-	        inputTxt: state.inputText
-})
-
-
-AddTodo = connect(mapStateToProps)(AddTodo)
+AddTodo = connect()(AddTodo)
 
 export default AddTodo
