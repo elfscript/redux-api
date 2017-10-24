@@ -1,8 +1,9 @@
-const inputReducer = (state = '', action) => {
+const inputReducer = (state ={id:-1,} , action) => {
 	switch (action.type) {
 	
-		case 'SET_INPUT_TEXT':
-			return action.text; 
+		case 'SET_INPUT':
+			console.log("SET_INPUT " + JSON.stringify(action.data));
+			return action.data; 
 		default:
 			return state
 	}

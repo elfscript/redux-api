@@ -8,7 +8,7 @@ const todoApp={
 	todos,
 	visibilityFilter,
 	isReady:appReady, //(state.isReady, action);
-	inputText:inputReducer, //(state.inputText, action)
+	inputData:inputReducer, //(state.inputData, action)
 };
 
 export default todoApp
