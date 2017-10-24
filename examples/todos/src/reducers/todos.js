@@ -1,4 +1,5 @@
 import rest from '../actions/rest';
+import {setVisibilityFilter} from '../actions';
 
 const todos = (state = [], action) => {
 	switch (action.type) {
@@ -34,7 +35,9 @@ const todos = (state = [], action) => {
 			console.log("update_item succeeded " + JSON.stringify(action.data));
 			console.log("typeof action.id = " + typeof(action.data.id));
 			var i=state.findIndex(i => i.id == action.data.id);
-			state[i]= action.data;
+			if(i>=0) state[i]= action.data;
+			else console.log("cannot find matching id in state.todos, update_item may have problem");
+			dispatch(setVisibilityFilter({filterKind:'SHOW_ALL', id: -1}));
 			return  state; 
 	
 		case 'ADD_TODO':
