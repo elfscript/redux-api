@@ -4,8 +4,22 @@ import { addTodo } from '../actions';
 import rest from '../actions/rest';
 import PropTypes from 'prop-types';
 
-let AddTodo = ({ dispatch, inputTxt }) => {
-	let myinput
+let AddTodo = ({ dispatch, inputData }) => {
+	let myinput, mybtn;
+	let mybtn_value, myinput_value;
+
+	if(!inputData || inputData=={} || inputData.id==-1) myinput_value= '';
+	else myinput_value=inputData.text;
+
+	if(!inputData || inputData=={} || inputData.id==-1) mybtn_value= 'Add Todo';
+	else{
+		mybtn_value= 'Update Todo';
+		console.log("inputData.text = " + inputData.text);
+		console.log("inputData=" + JSON.stringify(inputData));
+	}
+
+	//mybtn.value=mybtn_value;
+	//if(myinput) myinput.value=myinput_value;
 
 	return ( 
 		<div>
@@ -14,30 +28,48 @@ let AddTodo = ({ dispatch, inputTxt }) => {
 				if (!myinput.value.trim()) {
 					return
 				}
-				var data={title: "Hello", text: myinput.value, completed:false};
-				console.log("onSubmit of AddTodo form");
-				console.log(JSON.stringify(data)); 
 				//dispatch rest.actions or not ??
 				//dispatch(addTodo(data.msg));
-				dispatch(rest.actions.addtodo({}, { body: JSON.stringify(data) } ) ); 
-				myinput.value = '';
-				}}>
+				if(mybtn_value=='Add Todo'){
+					var data={ title: "Hello", text: myinput.value, completed:false};
+					dispatch(rest.actions.addtodo({}, { body: JSON.stringify(data) } ) ); 
+					console.log("onSubmit of AddTodo form");
+					console.log(JSON.stringify(data)); 
 
-				<input ref={node => { myinput = node } } value={inputTxt}/>
-				<button type="submit">
-					Add Todo
-				</button>
-			</form>
-		</div>
+				}else if(mybtn_value=='Update Todo'){
+					inputData.text=myinput.value;
+					dispatch(rest.actions.update_item({}, { body: JSON.stringify(inputData) } ) ); 
+					console.log("onSubmit of Update form");
+					console.log(JSON.stringify(inputData)); 
+
+					}
+
+					myinput.value = '';
+					mybtn.value='Add Todo';
+					mybtn.innerHTML='Add Todo';
+					if(inputData) inputData.id=-1;
+					}}>
+
+
+					<input type='text' ref={node => { myinput = node } } defaultValue={myinput_value}/>
+					<button ref={x=> {mybtn=x}} value={mybtn_value} type="submit">
+						{ mybtn_value}
+					</button>
+				</form>
+			</div>
 	)
 }
 AddTodo.propTypes = {
-	inputTxt:PropTypes.string,
+	inputData: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		completed: PropTypes.bool,
+		text: PropTypes.string
+	}),
 }
 
 //=======================
 const mapStateToProps = (state) => ({
-	        inputTxt: state.inputText
+	inputData: state.inputData
 })
 
 
