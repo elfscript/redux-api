@@ -131,16 +131,16 @@ router.post('/todos/', (req, res) => {
 
 //===
 router.put('/update_item/', (req, res) => {
-	const updatedNoteData = req.body;
-
-	// Update updatedNoteData to DB
+	const data = req.body;
+   console.log("update_item, data= " + JSON.stringify(data));
+	// Update data to DB
 	db.collection('todos')
-		.update({ id: updatedNoteData.id }, { $set: updatedNoteData }, (err) => {
+		.update({ id: data.id }, { $set:{text: data.text, completed:data.completed, title:data.title} }, (err) => {
 			if (err) {
 				console.log(err);
 			} else {
 				db.collection('todos')
-					.find({ id: updatedNoteData.id })
+					.find({ id: data.id })
 					.next((errInner, doc) => {
 						if (errInner) {
 							console.log('error ', errInner);
