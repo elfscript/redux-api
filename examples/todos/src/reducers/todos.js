@@ -30,7 +30,13 @@ const todos = (state = [], action) => {
 			console.log("typeof action.id = " + typeof(action.data.id));
 			return  state.filter(function(item) { return item.id !== action.data.id });
 			//return state;
-
+		case rest.events.update_item.actionSuccess:
+			console.log("update_item succeeded " + JSON.stringify(action.data));
+			console.log("typeof action.id = " + typeof(action.data.id));
+			var i=state.findIndex(i => i.id == action.data.id);
+			state[i]= action.data;
+			return  state; 
+	
 		case 'ADD_TODO':
 			/*return [
 				Object.assign({}, state,
