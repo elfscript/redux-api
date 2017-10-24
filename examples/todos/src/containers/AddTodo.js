@@ -19,10 +19,10 @@ let AddTodo = ({ dispatch, inputData }) => {
 	}
 
 	//mybtn.value=mybtn_value;
-	//if(myinput) myinput.value=myinput_value;
-
-	return ( 
-		<div>
+	//	if(myinput) myinput.value=myinput_value;
+	myinput_value="this is a test";
+	return ( <div>{ (()=>{ if(myinput) myinput_value=myinput.value;
+console.log("this is myinput_value, "+ myinput_value)})() }
 			<form onSubmit={e => {
 				e.preventDefault();
 				if (!myinput.value.trim()) {
