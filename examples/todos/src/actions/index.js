@@ -15,9 +15,9 @@ export const toggleTodo = (id) => ({
   id
 })
 
-export const setInputText = (txt) => ({
-  type: 'SET_INPUT_TEXT',
-  text: txt
+export const setInput = (data) => ({
+  type: 'SET_INPUT',
+  data: data
 })
 
 

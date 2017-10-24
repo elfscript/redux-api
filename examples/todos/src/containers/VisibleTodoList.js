@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo, setVisibilityFilter, setInputText} from '../actions'
+import { toggleTodo, setVisibilityFilter, setInput} from '../actions'
 import TodoList from '../components/TodoList'
 import rest from '../actions/rest'
 
@@ -27,7 +27,7 @@ const mapDispatchToProps =(dispatch) => {
 		onTodoClick: (id)=> dispatch(toggleTodo(id)),
 		onEditItem: (data)=> {
 			dispatch(setVisibilityFilter({filterKind:'SHOW_ID', id: data.id}));
-			dispatch(setInputText(data.text));
+			dispatch(setInput(data));
 		},
 		onDeleteItem: (id) => dispatch(rest.actions.delete_item({id:id}))
 	}

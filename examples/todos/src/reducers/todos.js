@@ -37,7 +37,7 @@ const todos = (state = [], action) => {
 			var i=state.findIndex(i => i.id == action.data.id);
 			if(i>=0) state[i]= action.data;
 			else console.log("cannot find matching id in state.todos, update_item may have problem");
-			dispatch(setVisibilityFilter({filterKind:'SHOW_ALL', id: -1}));
+			//xxx dispatch(setVisibilityFilter({filterKind:'SHOW_ALL', id: -1}));
 			return  state; 
 	
 		case 'ADD_TODO':
